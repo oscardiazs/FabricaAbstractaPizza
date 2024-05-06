@@ -38,7 +38,7 @@ public class PreparadorPizza {
         if (tam == Tamano.PEQUENO) {
             mp.moldearPizzaPequena();
         } else if (tam == Tamano.MEDIANO) {
-            mp.molderarPizzaMediana();
+            mp.moldearPizzaMediana();
         } else {
             throw new ExcepcionParametrosInvalidos("Tamano de piza invalido:"+tam);
         }

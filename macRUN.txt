@@ -1,0 +1,3 @@
+/Library/Maven/apache-maven-3.9.6/bin/mvn clean install
+/Library/Maven/apache-maven-3.9.6/bin/mvn exec:java -Dexec.mainClass="edu.unisabana.pizzafactory.consoleview.PreparadorPizza"
+/Library/Maven/apache-maven-3.9.6/bin/mvn compile
