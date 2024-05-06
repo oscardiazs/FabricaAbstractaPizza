@@ -42,7 +42,7 @@ public class PreparadorPizza {
         } else {
             throw new ExcepcionParametrosInvalidos("Tamano de piza invalido:"+tam);
         }
-	aplicarIngredientes(ingredientes);
+	    aplicarIngredientes(ingredientes);
         hpd.hornear();
     }
 
