@@ -1,12 +1,26 @@
 
 package edu.unisabana.pizzafactory.consoleview;
 
-import edu.unisabana.pizzafactory.model.AmasadorPizzaDelgada;
+// Amasadores
+//import edu.unisabana.pizzafactory.model.AmasadorPizzaDelgada;
+//import edu.unisabana.pizzafactory.model.AmasadorPizzaGruesa;
+//import edu.unisabana.pizzafactory.model.AmasadorPizzaIntegral;
+
+//Horneadores
+//import edu.unisabana.pizzafactory.model.HorneadorPizzaDelgada;
+//import edu.unisabana.pizzafactory.model.HorneadorPizzaGruesa;
+//import edu.unisabana.pizzafactory.model.HorneadorPizzaIntegral;
+
+//Moldeadores
+//import edu.unisabana.pizzafactory.model.MoldeadorPizzaDelgada;
+//import edu.unisabana.pizzafactory.model.MoldeadorPizzaGruesa;
+//import edu.unisabana.pizzafactory.model.MoldeadorPizzaIntegral;
+
+//Extras
 import edu.unisabana.pizzafactory.model.ExcepcionParametrosInvalidos;
-import edu.unisabana.pizzafactory.model.HorneadorPizzaDelgada;
-import edu.unisabana.pizzafactory.model.Ingrediente;
-import edu.unisabana.pizzafactory.model.MoldeadorPizzaDelgada;
 import edu.unisabana.pizzafactory.model.Tamano;
+import edu.unisabana.pizzafactory.model.Ingrediente;
+
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,7 +29,158 @@ import java.util.logging.Logger;
  *
  * @author cesarvefe
  */
-public class PreparadorPizza {
+
+/**
+ * PreparadorPizza
+ */
+
+ // Interfaz o clase abstracta para el Factory Method
+ interface PreparadorPizza {
+    PreparacionesPizza crearPizza();
+}
+
+// Interfaz para el producto
+interface PreparacionesPizza {
+    void amasar();
+    void hornear();
+    void moldearPizzaPequena();
+    void moldearPizzaMediana();
+}
+
+// Clases para implementar el factory method
+class FabricaPizzaDelgada implements PreparadorPizza{
+    @Override
+    public PreparacionesPizza crearPizza() {
+        return new PizzaDelgada();
+    }
+}
+class FabricaPizzaGruesa implements PreparadorPizza{
+    @Override
+    public PreparacionesPizza crearPizza() {
+        return new PizzaGruesa();
+    }
+}
+class FabricaPizzaIntegral implements PreparadorPizza{
+    @Override
+    public PreparacionesPizza crearPizza() {
+        return new PizzaIntegral();
+    }
+}
+
+
+
+// Clase concreta del producto PizzaDelgada
+class PizzaDelgada implements PreparacionesPizza{
+    @Override
+    public void amasar() {
+        Logger.getLogger(PizzaDelgada.class.getName())
+                .log(Level.INFO, "[@@] Amasando la pizza delgada con masa convencional.");
+        
+        //CODIGO DE LLAMADO AL MICROCONTROLADOR
+        
+    }
+    @Override
+    public void hornear() {
+        Logger.getLogger(PizzaDelgada.class.getName())
+            .log(Level.INFO, "[~~] Horneando la pizza delgada con masa convencional.");
+
+        //CODIGO DE LLAMADO AL MICROCONTROLADOR
+    }
+    @Override
+    public void moldearPizzaPequena() {
+        Logger.getLogger(PizzaDelgada.class.getName())
+                .log(Level.INFO, "[O] Moldeando pizza pequena de masa convencional.");
+        
+        //CODIGO DE LLAMADO AL MICROCONTROLADOR
+
+    }
+    @Override
+    public void moldearPizzaMediana() {
+        Logger.getLogger(PizzaDelgada.class.getName())
+                .log(Level.INFO, "[O] Moldeando pizza mediana de masa convencional.");
+        
+        //CODIGO DE LLAMADO AL MICROCONTROLADOR
+    }
+
+}
+
+// Clase concreta del producto PizzaGruesa
+class PizzaGruesa implements PreparacionesPizza{
+    @Override
+    public void amasar() {
+        Logger.getLogger(PizzaGruesa.class.getName())
+                .log(Level.INFO, "[@@] Amasando la pizza gruesa con masa de pan.");
+        
+        //CODIGO DE LLAMADO AL MICROCONTROLADOR
+        
+    }
+    @Override
+    public void hornear() {
+        Logger.getLogger(PizzaGruesa.class.getName())
+            .log(Level.INFO, "[~~] Horneando la pizza gruesa con masa de pan.");
+
+        //CODIGO DE LLAMADO AL MICROCONTROLADOR
+    }
+    @Override
+    public void moldearPizzaPequena() {
+        Logger.getLogger(PizzaGruesa.class.getName())
+                .log(Level.INFO, "[O] Moldeando pizza pequena de masa gruesa.");
+        
+        //CODIGO DE LLAMADO AL MICROCONTROLADOR
+
+    }
+    @Override
+    public void moldearPizzaMediana() {
+        Logger.getLogger(PizzaGruesa.class.getName())
+                .log(Level.INFO, "[O] Moldeando pizza mediana de masa gruesa.");
+        
+        //CODIGO DE LLAMADO AL MICROCONTROLADOR
+    }
+    
+}
+
+// Clase concreta del producto PizzaIntegral
+class PizzaIntegral implements PreparacionesPizza{
+    @Override
+    public void amasar() {
+        Logger.getLogger(PizzaIntegral.class.getName())
+                .log(Level.INFO, "[@@] Amasando la pizza con masa integral.");
+        
+        //CODIGO DE LLAMADO AL MICROCONTROLADOR
+        
+    }
+    @Override
+    public void hornear() {
+        Logger.getLogger(PizzaIntegral.class.getName())
+            .log(Level.INFO, "[~~] Horneando la pizza con masa integral.");
+
+        //CODIGO DE LLAMADO AL MICROCONTROLADOR
+    }
+    @Override
+    public void moldearPizzaPequena() {
+        Logger.getLogger(PizzaIntegral.class.getName())
+                .log(Level.INFO, "[O] Moldeando pizza pequena de masa integral.");
+        
+        //CODIGO DE LLAMADO AL MICROCONTROLADOR
+
+    }
+    @Override
+    public void moldearPizzaMediana() {
+        Logger.getLogger(PizzaIntegral.class.getName())
+                .log(Level.INFO, "[O] Moldeando pizza mediana de masa integral.");
+        
+        //CODIGO DE LLAMADO AL MICROCONTROLADOR
+    }
+
+}
+
+
+
+
+
+
+
+/**public class PreparadorPizza {
 
     public static void main(String args[]){
         try {
@@ -58,3 +223,6 @@ public class PreparadorPizza {
 
 
 }
+*/
+
+
