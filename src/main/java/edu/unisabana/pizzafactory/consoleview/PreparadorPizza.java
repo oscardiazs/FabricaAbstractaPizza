@@ -1,27 +1,12 @@
 
 package edu.unisabana.pizzafactory.consoleview;
 
-// Amasadores
-//import edu.unisabana.pizzafactory.model.AmasadorPizzaDelgada;
-//import edu.unisabana.pizzafactory.model.AmasadorPizzaGruesa;
-//import edu.unisabana.pizzafactory.model.AmasadorPizzaIntegral;
-
-//Horneadores
-//import edu.unisabana.pizzafactory.model.HorneadorPizzaDelgada;
-//import edu.unisabana.pizzafactory.model.HorneadorPizzaGruesa;
-//import edu.unisabana.pizzafactory.model.HorneadorPizzaIntegral;
-
-//Moldeadores
-//import edu.unisabana.pizzafactory.model.MoldeadorPizzaDelgada;
-//import edu.unisabana.pizzafactory.model.MoldeadorPizzaGruesa;
-//import edu.unisabana.pizzafactory.model.MoldeadorPizzaIntegral;
-
 //Extras
 import edu.unisabana.pizzafactory.model.ExcepcionParametrosInvalidos;
 import edu.unisabana.pizzafactory.model.Tamano;
 import edu.unisabana.pizzafactory.model.Ingrediente;
 
-import java.util.Arrays;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -168,44 +153,42 @@ class PizzaIntegral implements PreparacionesPizza {
 public class PreparadorPizza {
 
     public void prepararPizza(PreparacionesPizza pizza, Ingrediente[] ingredientes, Tamano tamano) {
-        
-        // Amasar la pizza
         pizza.amasar();
-
-        // Agregar los ingredientes
         for (Ingrediente ingrediente : ingredientes) {
-            System.out.println("[+] Agregando " + ingrediente.getCantidad() + " unidades de " + ingrediente.getNombre());
-            // Implementar la lógica para agregar el ingrediente a la pizza (código específico de la clase concreta)
+            System.out.println("[+] Aplicando " + ingrediente.getCantidad() + " unidad/es de " + ingrediente.getNombre());
+            
         }
-
         // Moldear la pizza según el tamaño
         if (tamano.equals(Tamano.PEQUENO)) {
             pizza.moldearPizzaPequena();
         } else {
             pizza.moldearPizzaMediana();
         }
-
-        // Hornear la pizza
         pizza.hornear();
 
-        System.out.println("[!] ¡Pizza lista para disfrutar!");
+        System.out.println("[!] ¡Pizza lista!");
     }
 
     public static void main(String[] args) {
         try {
             Ingrediente[] ingredientes = new Ingrediente[]{new Ingrediente("queso", 1), new Ingrediente("jamón", 2)};
+            
+            // -------------------------------
+            // Escoger el tamano de la pizza
             Tamano tamano = Tamano.MEDIANO;
-
+            // Escoger el tipo de Pizza
             String tipoPizza = "integral";
+            // -------------------------------
+
             CreadorPizza fabrica = null;
             switch (tipoPizza) {
-                case "delgada":
+                case "Delgada":
                     fabrica = new FabricaPizzaDelgada();
                     break;
-                case "gruesa":
+                case "Gruesa":
                     fabrica = new FabricaPizzaGruesa();
                     break;
-                case "integral":
+                case "Integral":
                     fabrica = new FabricaPizzaIntegral();
                     break;
                 default:
@@ -223,39 +206,5 @@ public class PreparadorPizza {
         }
     }
 }
-
-
-
-
-
-/*
-   public void prepararPizza(Ingrediente[] ingredientes, Tamano tam)
-            throws ExcepcionParametrosInvalidos {
-        
-        
-        if (tam == Tamano.PEQUENO) {
-            mp.moldearPizzaPequena();
-        } else if (tam == Tamano.MEDIANO) {
-            mp.moldearPizzaMediana();
-        } else {
-            throw new ExcepcionParametrosInvalidos("Tamano de piza invalido:"+tam);
-        }
-	    aplicarIngredientes(ingredientes);
-        hpd.hornear();
-    }
-
-    private void aplicarIngredientes(Ingrediente[] ingredientes) {
-        Logger.getLogger(PreparadorPizza.class.getName())
-                .log(Level.INFO, "APLICANDO INGREDIENTES!:{0}", Arrays.toString(ingredientes));
-        
-        //CODIGO DE LLAMADO AL MICROCONTROLADOR
-        
-        
-        
-    }
-
-
-}
-*/
 
 
